@@ -1,0 +1,59 @@
+{
+  "name": "react-native-media-header",
+  "version": "1.0.0",
+  "description": "Parallax + blur media header for React Native detail screens: paging photos, scroll-linked blur, page dots, chip slot, background colour that follows the photo. Zero dependencies.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "react-native": "src/index.ts",
+  "source": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "src",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "expo",
+    "header",
+    "parallax",
+    "blur",
+    "carousel",
+    "media",
+    "scroll",
+    "animation",
+    "stretchy-header"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hemz190297/react-native-media-header.git"
+  },
+  "homepage": "https://github.com/hemz190297/react-native-media-header#readme",
+  "bugs": {
+    "url": "https://github.com/hemz190297/react-native-media-header/issues"
+  },
+  "author": "Hemant Sonkusare",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18",
+    "react-native": ">=0.71"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "react": "^19.2.3",
+    "react-native": "^0.86.3",
+    "typescript": "~5.9.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

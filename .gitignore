@@ -1,0 +1,15 @@
+node_modules/
+lib/
+.DS_Store
+*.tgz
+npm-debug.log*
+
+# example app
+example/node_modules/
+example/.expo/
+example/ios/
+example/android/
+example/dist/
+
+# tooling
+.claude/
