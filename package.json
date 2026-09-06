@@ -1,6 +1,6 @@
 {
   "name": "react-native-media-header",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parallax + blur media header for React Native detail screens: paging photos, scroll-linked blur, page dots, chip slot, background colour that follows the photo. Zero dependencies.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
