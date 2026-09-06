@@ -89,26 +89,53 @@ function Screen() {
       </Animated.ScrollView>
 
       {/* Fixed to the screen, not the content: strongest at the very top, sharp at its bottom edge. */}
-      <MediaHeaderTopBlur BlurComponent={BlurView} height={insets.top + 64} layers={2} tint="light" intensity={14} />
+      <MediaHeaderTopBlur BlurComponent={BlurView} height={insets.top + 64} tint="light" intensity={14} />
     </View>
   );
 }
 
-/** Swipe two pages → scroll up into the blur → back → pull-down zoom → next page. Recording only. */
+/**
+ * Swipe two pages → scroll up into the blur → back → pull-down zoom → next page. Recording only.
+ *
+ * The vertical moves are tweened frame by frame rather than with `scrollTo({animated: true})`,
+ * whose duration RN doesn't expose — this way the effect reads at a watchable speed.
+ */
 function useAutoTour(scrollRef: RefObject<ScrollView | null>, headerRef: RefObject<MediaHeaderRef | null>) {
   useEffect(() => {
     if (!AUTO_TOUR) return;
+    let frame: number | null = null;
+    let cancelled = false;
+    let current = 0;
+
+    const tween = (to: number, duration: number) => {
+      const from = current;
+      const start = Date.now();
+      const step = () => {
+        if (cancelled) return;
+        const p = Math.min(1, (Date.now() - start) / duration);
+        const eased = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // ease-in-out
+        current = from + (to - from) * eased;
+        scrollRef.current?.scrollTo({ y: current, animated: false });
+        if (p < 1) frame = requestAnimationFrame(step);
+      };
+      step();
+    };
+
     const at = (ms: number, fn: () => void) => setTimeout(fn, ms);
     const timers = [
-      at(1500, () => headerRef.current?.scrollToPage(1, true)),
-      at(2900, () => headerRef.current?.scrollToPage(2, true)),
-      at(4300, () => scrollRef.current?.scrollTo({ y: 320, animated: true })),
-      at(6900, () => scrollRef.current?.scrollTo({ y: 0, animated: true })),
-      at(8500, () => scrollRef.current?.scrollTo({ y: -130, animated: true })),
-      at(9100, () => scrollRef.current?.scrollTo({ y: 0, animated: true })),
-      at(10300, () => headerRef.current?.scrollToPage(3, true)),
+      at(1600, () => headerRef.current?.scrollToPage(1, true)),
+      at(3400, () => headerRef.current?.scrollToPage(2, true)),
+      at(5200, () => tween(340, 2600)), // scroll up into the blur, slowly
+      at(9000, () => tween(0, 2200)), // and back
+      at(12000, () => tween(-140, 900)), // pull down → zoom
+      at(13100, () => tween(0, 1100)),
+      at(15000, () => headerRef.current?.scrollToPage(3, true)),
     ];
-    return () => timers.forEach(clearTimeout);
+    return () => {
+      cancelled = true;
+      if (frame !== null) cancelAnimationFrame(frame);
+      timers.forEach(clearTimeout);
+    };
   }, [scrollRef, headerRef]);
 }
 

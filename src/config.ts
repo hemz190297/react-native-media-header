@@ -23,7 +23,7 @@ export const defaultConfig: MediaHeaderConfig = {
     bottomBlurIntensity: 18,
     bottomBlurTint: 'dark',
     bottomBlurHeightFraction: 0.34,
-    bottomBlurLayers: 3,
+    bottomBlurLayers: 8,
     fallbackColor: 'rgba(0,0,0,0.55)',
   },
   scrim: {

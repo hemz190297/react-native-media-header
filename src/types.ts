@@ -81,16 +81,13 @@ export interface BlurConfig {
   scrollBlurTint: 'light' | 'dark' | 'default';
   /** Cap on the scroll blur's opacity at full scroll. */
   scrollBlurMaxOpacity: number;
-  /**
-   * Resting frosted band across the bottom, behind the dots / accessory. Off by default: RN has no
-   * gradient mask for blur views, so the band's top edge is visible (softened by `bottomBlurLayers`).
-   */
+  /** Resting frosted band across the bottom, behind the dots / accessory. Off by default. */
   showsBottomBlur: boolean;
   bottomBlurIntensity: number;
   bottomBlurTint: 'light' | 'dark' | 'default';
   /** Height of the band as a fraction of the header height. */
   bottomBlurHeightFraction: number;
-  /** Stacked layers of decreasing height so the band fades in instead of starting with a hard edge. */
+  /** Bands used to fake a gradient mask (cosine opacity ramp). More = smoother, slightly more GPU. */
   bottomBlurLayers: number;
   /** Used instead of a blur when no `BlurComponent` is provided. */
   fallbackColor: string;

@@ -6,15 +6,15 @@
   <em><a href="https://github.com/hemz190297/react-native-media-header/blob/main/docs/demo.mp4">Full-quality video</a> (also shows the Swift original)</em>
 </p>
 
-A media header for detail screens: a paging photo carousel with the overlays that let content
-scroll up over it — a scroll-linked blur, a scrim behind the page dots, a colour blend into the
-page background — plus the pull-down zoom / scroll-up parallax curve that drives it, an optional
-fixed blur under the status bar, and a ready-made chip for the corner slot.
+A media header for detail screens. Paging photo carousel, scroll-linked blur, scrim + page dots,
+a colour blend into the page background, and the pull-down zoom / parallax curve that drives it
+all. There is also an optional fixed blur for the status bar area and a small chip for the
+corner slot.
 
-**Zero dependencies.** Runs on the core `Animated` API with the native driver — no Reanimated,
-no babel plugin. Blur, gradient, image and colour-extraction components are *injected*, so it
-works in Expo Go, bare RN, iOS and Android. (Pull-down zoom is iOS-only: Android clamps the
-scroll offset at 0; the parallax and blur work everywhere.)
+**Zero dependencies.** Runs on the core `Animated` API with the native driver, so no Reanimated
+and no babel plugin. Blur, gradient, image and colour-extraction components are *injected*,
+which is why it works in Expo Go, bare RN, iOS and Android. (Pull-down zoom is iOS-only: Android
+clamps the scroll offset at 0; the parallax and blur work everywhere.)
 
 React Native port of [MediaHeaderKit](https://github.com/hemz190297/MediaHeaderKit) (Swift).
 

@@ -24,7 +24,8 @@ export interface MediaHeaderChipStyle {
 
 export interface MediaHeaderChipProps {
   icons?: ImageSourcePropType[];
-  title: string;
+  /** Text beside the icons. Omit for an icons-only chip. */
+  title?: string;
   style?: MediaHeaderChipStyle;
   containerStyle?: StyleProp<ViewStyle>;
 }
@@ -35,7 +36,7 @@ export interface MediaHeaderChipProps {
  */
 export const MediaHeaderChip = memo(function MediaHeaderChip({
   icons = [],
-  title,
+  title = '',
   style = {},
   containerStyle,
 }: MediaHeaderChipProps) {
@@ -79,9 +80,11 @@ export const MediaHeaderChip = memo(function MediaHeaderChip({
           ))}
         </View>
       )}
-      <Text style={[styles.text, style.text]} numberOfLines={1}>
-        {title}
-      </Text>
+      {title !== '' && (
+        <Text style={[styles.text, style.text]} numberOfLines={1}>
+          {title}
+        </Text>
+      )}
     </View>
   );
 });

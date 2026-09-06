@@ -10,6 +10,3 @@ example/.expo/
 example/ios/
 example/android/
 example/dist/
-
-# tooling
-.claude/
