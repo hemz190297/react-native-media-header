@@ -2,6 +2,8 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hemz190297/react-native-media-header/main/docs/demo.gif" width="300" alt="react-native-media-header demo — swipe, scroll-up blur + parallax, pull-down zoom, background colour following the photo">
+  <br>
+  <em><a href="https://github.com/hemz190297/react-native-media-header/blob/main/docs/demo.mp4">Full-quality video</a> (also shows the Swift original)</em>
 </p>
 
 A media header for detail screens: a paging photo carousel with the overlays that let content
